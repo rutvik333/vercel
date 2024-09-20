@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Product</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .custom-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .blank-apparel,
+        .design-print,
+        .design-prints {
+            flex-basis: 30%;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+         .blank-apparel {
+            background-color: #fff;
+        }
+
+        .design-print {
+            background-color: #fff;
+        } 
+
+        .design-prints {
+            background-color: #fff;
+        }
+            
+
+        .symbol {
+            font-size: 2rem;
+            margin: 0 10px;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .custom-section {
+                flex-wrap: wrap;
+            }
+
+            .blank-apparel,
+            .design-print,
+            .design-prints {
+                flex-basis: 100%;
+                margin: 20px 0;
+            }
+
+            .symbol {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="custom-product">
+
+        <div class="container">
+            <div class="main-content text-center">
+                <h3 class="custom-heading">Print Custom Product</h3>
+                <p class="custom-para my-3 mb-5">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                </p>
+            </div>
+
+            <div class="custom-section">
+                <!-- Apparel Selection -->
+                <div class="col-lg-3 col-md-3 col-sm-12 blank-apparel  ">
+                    <select id="myselection" class="form-select">
+                        <option  value="One">Orange T-Shirt</option>
+                        <option value="Two">Blue T-Shirt</option>
+                    </select>
+                    <div id="showOne"  >
+                        <img src="http://rutvik.dev.brainbean.us/wp-content/uploads/2024/09/orange-tshirt.png" class="img-fluid" >
+                    </div>
+                    <div id="showTwo">
+                    </div>
+                </div>
+
+                <!-- Plus Symbol -->
+                <div class="symbol">+</div>
+
+                <!-- Print Selection -->
+                <div class="col-lg-3 col-md-3 col-sm-12 design-print ">
+                    <select id="myprint" class="form-select">
+                        <option selected value="Four">Print 1</option>
+                        <option value="Five">Print 2</option>
+                    </select>
+                    <div id="showFour" class="print" >
+                        <img src="http://rutvik.dev.brainbean.us/wp-content/uploads/2024/09/Angel-Distro-Logo.png" class="img-fluid" >
+                    </div>
+                    <div id="showFive" class="print" >
+                    </div>
+                </div>
+
+                <!-- Equals Symbol -->
+                <div class="symbol">=</div>
+
+                <!-- Final Design -->
+                <div class="col-lg-3 col-md-3 col-sm-12 design-prints  ">
+                    <p id="mycombo">Final Design</p>
+
+                    <div id="combo_img">
+                        <div id="getOneFour" class=" text-center" >
+                            <img src="http://rutvik.dev.brainbean.us/wp-content/uploads/2024/09/orange-tshirt-angel-logo.png" class="img-fluid" >
+                        </div>
+                        <div id="getTwoFive" >
+                        </div>
+                        <div id="getOneFive"  >
+                        </div>
+                        <div id="getTwoFour"  >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+     // Get the select elements
+const apparelSelect = document.getElementById('myselection');
+const printSelect = document.getElementById('myprint');
+
+// Get the image containers
+const apparelImageContainer = document.getElementById('showOne');
+const printImageContainer = document.getElementById('showFour');
+const finalDesignContainer = document.getElementById('combo_img');
+
+// Function to update final design
+function updateFinalDesign() {
+  const apparelValue = apparelSelect.value;
+  const printValue = printSelect.value;
+
+  // Show the correct apparel image
+  if (apparelValue === 'One') {
+    apparelImageContainer.innerHTML = `<img src="http://rutvik.dev.brainbean.us/wp-content/uploads/2024/09/orange-tshirt.png" class="img-fluid" >`;
+  } else if (apparelValue === 'Two') {
+    apparelImageContainer.innerHTML = `<img src="http://rutvik.dev.brainbean.us/wp-content/uploads/2024/09/blue-tshirt.png" class="img-fluid" >`;
+  }
+
+  // Show the correct print image
+  if (printValue === 'Four') {
+    printImageContainer.innerHTML = `<img src="http://rutvik.dev.brainbean.us/wp-content/uploads/2024/09/Angel-Distro-Logo.png" class="img-fluid" >`;
+  } else if (printValue === 'Five') {
+    printImageContainer.innerHTML = `<img src="http://rutvik.dev.brainbean.us/wp-content/uploads/2024/09/D8-Super-Store-Logo.png" class="img-fluid">`;
+  }
+
+  // Show the correct final design image
+  if (apparelValue === 'One' && printValue === 'Four') {
+    finalDesignContainer.innerHTML = `<img src="http://rutvik.dev.brainbean.us/wp-content/uploads/2024/09/orange-tshirt-angel-logo.png" class="img-fluid" >`;
+  } else if (apparelValue === 'One' && printValue === 'Five') {
+    finalDesignContainer.innerHTML = `<img src="http://rutvik.dev.brainbean.us/wp-content/uploads/2024/09/orange-tshirt-d8ss-logo.png" class="img-fluid" >`;
+  } else if (apparelValue === 'Two' && printValue === 'Four') {
+    finalDesignContainer.innerHTML = `<img src="http://rutvik.dev.brainbean.us/wp-content/uploads/2024/09/blue-tshirt-angel-logo.png" class="img-fluid" >`;
+  } else if (apparelValue === 'Two' && printValue === 'Five') {
+    finalDesignContainer.innerHTML = `<img src="http://rutvik.dev.brainbean.us/wp-content/uploads/2024/09/blue-tshirt-d8ss-logo.png" class="img-fluid" >`;
+  }
+}
+
+// Add event listeners to the select elements
+apparelSelect.addEventListener('change', updateFinalDesign);
+printSelect.addEventListener('change', updateFinalDesign);
+    </script>
+
+</body>
+
+</html>
